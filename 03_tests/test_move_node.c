@@ -10,7 +10,7 @@ START_TEST(from_stack_to_queue_1) {
 
   // Act
   move_node_from_stack_to_queue(&s_head, &q_head);
-  
+
   // Assert
   ck_assert_ptr_eq(q_head->pnext, NULL);
   ck_assert_int_eq(q_head->token_type, s_node.token_type);
@@ -114,7 +114,7 @@ END_TEST
 
 Suite* test_move_node(void) {
   Suite* s = suite_create("moving node suite");
-  
+
   TCase* from_st_to_q_tc = tcase_create("moving node from stack to queue");
   tcase_add_test(from_st_to_q_tc, from_stack_to_queue_1);
   tcase_add_test(from_st_to_q_tc, from_stack_to_queue_2);

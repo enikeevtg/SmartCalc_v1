@@ -15,21 +15,19 @@
 #define log_info(M, ...)
 #endif
 
+#define MAX_INPUT_STR_LEN 255
+
 enum error_codes {
   OK,
+  TOO_LONG_EXPRESSION,
+  EMPTY_EXPRESSION,
   UNDEFINED_TOKEN,
   DATA_STRUCT_UNDERFLOW,
   DATA_STRUCT_OVERFLOW,
-  TOO_LONG_STRING,
-  EMPTY_EXPRESSION,
-  MEMORY_ACCESS_ERROR,  // ! test_split_string_to_tokens.c
   UNBALANCED_BRACKETS,
   EMPTY_BRACKETS,
   INCORRECT_INPUT,
-  EMPTY_QUEUE,
-  STACK_UNDERFLOW,  // ! push.c
-  STACK_OVERFLOW,   // ! push.c
-  QUEUE_OVERFLOW    // ! push.c
+  EMPTY_QUEUE
 };
 
 #define ERRORS_MESSAGES_NUMBERS 14
@@ -37,19 +35,15 @@ enum error_codes {
 #define ERRORS_MESSAGES                                                 \
   char errors_msg[ERRORS_MESSAGES_NUMBERS][ERRORS_MESSAGE_MAX_SIZE] = { \
       "OK",                                                             \
+      "TOO_LONG_EXPRESSION",                                                \
+      "EMPTY_EXPRESSION",                                               \
       "UNDEFINED_TOKEN",                                                \
       "DATA_STRUCT_UNDERFLOW",                                          \
       "DATA_STRUCT_OVERFLOW",                                           \
-      "TOO_LONG_STRING",                                                \
-      "EMPTY_EXPRESSION",                                               \
-      "MEMORY_ACCESS_ERROR",                                            \
       "UNBALANCED_BRACKETS",                                            \
       "EMPTY_BRACKETS",                                                 \
       "INCORRECT_INPUT",                                                \
-      "EMPTY_QUEUE",                                                    \
-      "STACK_UNDERFLOW",                                                \
-      "STACK_OVERFLOW",                                                 \
-      "QUEUE_OVERFLOW"}
+      "EMPTY_QUEUE"}
 
 #define MATH_FUNCTIONS_NUMBER 9
 #define MATH_FUNCTIONS_NAMES_LENGTH 5
@@ -73,7 +67,6 @@ enum error_codes {
 // FUNCTIONS
 // data structures processing
 int push(int address, node_t** phead, node_t* pdata);
-int pop(node_t** s_phead, node_t* pnode);
 void fill_node(node_t* src, node_t* dest);
 void remove_head_node(node_t** phead);
 void remove_struct(node_t** phead);
@@ -81,8 +74,7 @@ int move_node_from_queue_to_stack(node_t** q_phead, node_t** s_phead);
 int move_node_from_stack_to_queue(node_t** s_phead, node_t** q_phead);
 
 // calculator
-int split_string_to_tokens(const char* str, char** tokens);
-int convert_infix_to_RPN(const char* str, node_t** q_phead);
+int convert_infix_to_RPN(const char* str, node_t** q_proot);
 int evaluate_expression(node_t* q_root, double variable, double* result);
 int numerical_calculation(node_t** s_phead, token_t function_id);
 

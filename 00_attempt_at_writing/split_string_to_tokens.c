@@ -3,7 +3,7 @@
  * enikeeev.tg@gmail.com
  */
 
-#include "../smart_calc.h"
+#include "attempt_at_writing.h"
 
 int value_token(char* dest, char** number);
 int operator_token(char* dest, char** operator);

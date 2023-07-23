@@ -80,10 +80,10 @@ tmp: clean
 
 # SERVICES
 style:
-	clang-format --style=google -n *.h $(SRC)
+	clang-format --style=google -n *.h $(SRC) $(TESTS_SRC)
 
 gost:
-	clang-format --style=google -i *.h $(SRC)
+	clang-format --style=google -i *.h $(SRC) $(TESTS_SRC)
 
 clean:
 	@$(RM) a.out

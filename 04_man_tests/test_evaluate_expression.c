@@ -1,7 +1,7 @@
 #include "../smart_calc.h"
 
 int main() {
-  char input_str[255] = "-2^2^3";
+  char input_str[255] = "-2^2^3+";
   printf("%s\n", input_str);
 
   node_t* q_root = NULL;
@@ -19,9 +19,10 @@ int main() {
 
   if (!error) error = evaluate_expression(q_root, 0, &result);
 
-  if (error)
-    printf("error_code = %d\n", error);
-  else
+  if (error) {
+    ERRORS_MESSAGES;
+    printf("error_code = %s\n", errors_msg[error]);
+  } else
     printf("%lf", result);
   return 0;
 }

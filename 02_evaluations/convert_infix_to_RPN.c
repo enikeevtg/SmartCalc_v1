@@ -22,12 +22,14 @@ int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
 
 /// @brief converting from infix notation to reverse Polish notation
 /// @param str
-/// @param q_phead queue head pointer pointer.
-/// Initial it is pointing to queue root.
+/// @param q_proot queue root pointer pointer.
 /// When function is doing it is redefined to queue head,
-/// but in the end of function it is redefined to first queue node pointer
+/// but in the end of function it is redefined to queue node root pointer
 /// @return error code
-int convert_infix_to_RPN(const char* str, node_t** q_phead) {
+int convert_infix_to_RPN(const char* str, node_t** q_proot) {
+  if (strlen(str) > MAX_INPUT_STR_LEN) return TOO_LONG_EXPRESSION;
+  if (strlen(str) == 0) return EMPTY_EXPRESSION;
+
   int error = OK;
   char* current_str = (char*)str;
   node_t* s_head = NULL;
@@ -39,27 +41,28 @@ int convert_infix_to_RPN(const char* str, node_t** q_phead) {
   while (!error && !(*current_str == '\0' && s_head == NULL)) {
     if (*current_str == ')') {
       container.token_type = CLOSE_BRACKET;
-      error = close_bracket_processing(address, &s_head, q_phead);
+      error = close_bracket_processing(address, &s_head, q_proot);
       current_str++;
-    } else if (*current_str == '\0') {
-      error = end_of_expression_processing(&s_head, q_phead);
+    } else if (*current_str == '\0' && address != STACK) {
+      error = end_of_expression_processing(&s_head, q_proot);
+    } else if (*current_str == '\0' && address == STACK) {
+      error = INCORRECT_INPUT;
     } else if (*current_str == ' ') {
       current_str++;
     } else if (strchr(token_chars, *current_str)) {
-      error = token_processing(&address, &current_str, &s_head, q_phead,
+      error = token_processing(&address, &current_str, &s_head, q_proot,
                                &container);
     } else {
       error = UNDEFINED_TOKEN;
     }
-    if (q_root == NULL) q_root = *q_phead;
+    if (q_root == NULL) q_root = *q_proot;
   }  // while
 
   if (error != OK) {
-    log_info("ERROR %d", error);
     remove_struct(&s_head);
     remove_struct(&q_root);
   }
-  *q_phead = q_root;
+  *q_proot = q_root;
   return error;
 }
 
@@ -190,14 +193,18 @@ int operator_packer(int prev_address, node_t** s_phead, char** str,
 /// @param pcontainer
 /// @return
 int function_packer(char** str, node_t* pcontainer) {
-  char* after_function_char_ptr = strpbrk(*str, "1234567890.+-*/^%(");
-  if (after_function_char_ptr == NULL) return INCORRECT_INPUT;
-
   int error = OK;
+  char* bracket = strchr(*str, '(');
+  char* after_function_char_ptr = strpbrk(*str, "()1234567890.+-*/^%");
+  if (bracket == NULL || bracket > after_function_char_ptr)
+    error = INCORRECT_INPUT;
 
   MATH_FUNCTIONS_NAMES;
-  char after_function_char = *after_function_char_ptr;
-  *after_function_char_ptr = '\0';
+  char after_function_char = '\0';
+  if (after_function_char_ptr != NULL) {
+    after_function_char = *after_function_char_ptr;
+    *after_function_char_ptr = '\0';
+  }
   int func_id = 0;
   while (func_id < MATH_FUNCTIONS_NUMBER &&
          strcmp(*str, math_functions_names[func_id]))
@@ -207,7 +214,8 @@ int function_packer(char** str, node_t* pcontainer) {
   } else {
     pcontainer->token_type = func_id;
     pcontainer->token_priority = PRIOR_5;
-    *after_function_char_ptr = after_function_char;
+    if (after_function_char_ptr != NULL)
+      *after_function_char_ptr = after_function_char;
     *str = after_function_char_ptr;
   }
   return error;
@@ -242,7 +250,8 @@ int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
     if (!error) error = push(*paddress, s_phead, pcontainer);
   } else if (pcontainer->token_type == POW) {  // right-associative POW
     while (!error && *s_phead != NULL &&
-           pcontainer->token_priority <= (*s_phead)->token_priority && (*s_phead)->token_type != POW) {
+           pcontainer->token_priority <= (*s_phead)->token_priority &&
+           (*s_phead)->token_type != POW) {
       error = move_node_from_stack_to_queue(s_phead, q_phead);
     }
     if (!error) error = push(STACK, s_phead, pcontainer);

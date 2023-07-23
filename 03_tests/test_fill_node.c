@@ -28,7 +28,7 @@ END_TEST
 
 Suite* test_fill_node(void) {
   Suite* s = suite_create("fill node suite");
-  
+
   TCase* fill_node_tc = tcase_create("fill node");
   tcase_add_test(fill_node_tc, fill_node_COS);
   tcase_add_test(fill_node_tc, fill_node_NUMBER);
