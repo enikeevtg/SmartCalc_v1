@@ -4,8 +4,12 @@ int main() {
   int tests_count = 0;
   int failed = 0;
 
-  Suite* smart_calc_tests[] = {test_push(), test_fill_node(), test_move_node(),
-                               test_errors_convert_infix_to_RPN(), NULL};
+  Suite* smart_calc_tests[] = {test_push(),
+                               test_fill_node(),
+                               test_move_node(),
+                               test_close_bracket_processing(),
+                               test_errors_convert_infix_to_RPN(),
+                               NULL};
 
   for (int i = 0; smart_calc_tests[i] != NULL; i++) {
     SRunner* runner = srunner_create(smart_calc_tests[i]);

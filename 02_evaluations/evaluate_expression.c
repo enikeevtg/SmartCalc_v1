@@ -5,15 +5,6 @@
 
 #include "../smart_calc.h"
 
-double u_plus(double value_2);
-double u_minus(double value_2);
-double add_calc(double value_1, double value_2);
-double sub_calc(double value_1, double value_2);
-double mult_calc(double value_1, double value_2);
-double div_calc(double value_1, double value_2);
-double mod_calc(double value_1, double value_2);
-double pow_calc(double value_1, double value_2);
-
 /// @brief reverse polish notation expression solving
 /// @param q_root queue root pointer
 /// @param variable variable value_2
@@ -47,6 +38,10 @@ int evaluate_expression(node_t* q_root, double variable, double* result) {
   return error;
 }
 
+/// @brief
+/// @param s_head
+/// @param function_id
+/// @return
 int numerical_calculation(node_t** s_head, token_t function_id) {
   double value_2 = (*s_head)->token_value;
   if (function_id == ACOS && fabs(value_2) > 1) return ACOS + 100;

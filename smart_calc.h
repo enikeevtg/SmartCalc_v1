@@ -35,7 +35,7 @@ enum error_codes {
 #define ERRORS_MESSAGES                                                 \
   char errors_msg[ERRORS_MESSAGES_NUMBERS][ERRORS_MESSAGE_MAX_SIZE] = { \
       "OK",                                                             \
-      "TOO_LONG_EXPRESSION",                                                \
+      "TOO_LONG_EXPRESSION",                                            \
       "EMPTY_EXPRESSION",                                               \
       "UNDEFINED_TOKEN",                                                \
       "DATA_STRUCT_UNDERFLOW",                                          \
@@ -67,15 +67,40 @@ enum error_codes {
 // FUNCTIONS
 // data structures processing
 int push(int address, node_t** phead, node_t* pdata);
+int pop(node_t** phead, node_t* pnode);
 void fill_node(node_t* src, node_t* dest);
 void remove_head_node(node_t** phead);
 void remove_struct(node_t** phead);
 int move_node_from_queue_to_stack(node_t** q_phead, node_t** s_phead);
 int move_node_from_stack_to_queue(node_t** s_phead, node_t** q_phead);
 
-// calculator
+// converter
 int convert_infix_to_RPN(const char* str, node_t** q_proot);
+int close_bracket_processing(int prev_address, node_t** s_phead,
+                             node_t** q_phead);
+int end_of_expression_processing(node_t** s_phead, node_t** q_phead);
+int token_processing(int* paddress, char** current_str, node_t** s_phead,
+                     node_t** q_phead, node_t* pcontainer);
+int container_packing(int prev_address, char** str, node_t** s_phead,
+                      node_t* pcontainer);
+int value_packer(char** str, node_t* pcontainer);
+int operator_packer(int prev_address, node_t** s_phead, char** str,
+                    node_t* pcontainer);
+int function_packer(char** str, node_t* pcontainer);
+void create_mult(int prev_address, node_t** s_phead, node_t* pcontainer);
+int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
+                      node_t* pcontainer);
+
+// evaluator
 int evaluate_expression(node_t* q_root, double variable, double* result);
 int numerical_calculation(node_t** s_phead, token_t function_id);
+double u_plus(double value_2);
+double u_minus(double value_2);
+double add_calc(double value_1, double value_2);
+double sub_calc(double value_1, double value_2);
+double mult_calc(double value_1, double value_2);
+double div_calc(double value_1, double value_2);
+double mod_calc(double value_1, double value_2);
+double pow_calc(double value_1, double value_2);
 
 #endif  // SMARTCALC_SMART_CALC_H_

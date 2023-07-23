@@ -5,21 +5,6 @@
 
 #include "../smart_calc.h"
 
-int close_bracket_processing(int prev_address, node_t** s_phead,
-                             node_t** q_phead);
-int end_of_expression_processing(node_t** s_phead, node_t** q_phead);
-int token_processing(int* paddress, char** current_str, node_t** s_phead,
-                     node_t** q_phead, node_t* pcontainer);
-int container_packing(int prev_address, char** str, node_t** s_phead,
-                      node_t* pcontainer);
-int value_packer(char** str, node_t* pcontainer);
-int operator_packer(int prev_address, node_t** s_phead, char** str,
-                    node_t* pcontainer);
-int function_packer(char** str, node_t* pcontainer);
-void create_mult(int prev_address, node_t** s_phead, node_t* pcontainer);
-int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
-                      node_t* pcontainer);
-
 /// @brief converting from infix notation to reverse Polish notation
 /// @param str
 /// @param q_proot queue root pointer pointer.
@@ -66,6 +51,11 @@ int convert_infix_to_RPN(const char* str, node_t** q_proot) {
   return error;
 }
 
+/// @brief
+/// @param prev_address
+/// @param s_phead
+/// @param q_phead
+/// @return
 int close_bracket_processing(int prev_address, node_t** s_phead,
                              node_t** q_phead) {
   if (prev_address == STACK && (*s_phead)->token_type == OPEN_BRACKET)
@@ -83,6 +73,10 @@ int close_bracket_processing(int prev_address, node_t** s_phead,
   return error;
 }
 
+/// @brief
+/// @param s_phead
+/// @param q_phead
+/// @return
 int end_of_expression_processing(node_t** s_phead, node_t** q_phead) {
   int error = OK;
   while (*s_phead != NULL && (*s_phead)->token_type != OPEN_BRACKET)
@@ -91,6 +85,13 @@ int end_of_expression_processing(node_t** s_phead, node_t** q_phead) {
   return error;
 }
 
+/// @brief
+/// @param address_ptr
+/// @param current_str
+/// @param s_phead
+/// @param q_phead
+/// @param pcontainer
+/// @return
 int token_processing(int* address_ptr, char** current_str, node_t** s_phead,
                      node_t** q_phead, node_t* pcontainer) {
   int error = OK;
@@ -102,6 +103,12 @@ int token_processing(int* address_ptr, char** current_str, node_t** s_phead,
   return error;
 }
 
+/// @brief
+/// @param prev_address
+/// @param str
+/// @param s_phead
+/// @param pcontainer
+/// @return
 int container_packing(int prev_address, char** str, node_t** s_phead,
                       node_t* pcontainer) {
   int error = OK;
@@ -131,6 +138,10 @@ int container_packing(int prev_address, char** str, node_t** s_phead,
   return error;
 }
 
+/// @brief
+/// @param str
+/// @param pcontainer
+/// @return
 int value_packer(char** str, node_t* pcontainer) {
   pcontainer->token_type = NUMBER;
   sscanf(*str, "%lf", &(pcontainer->token_value));
@@ -143,6 +154,12 @@ int value_packer(char** str, node_t* pcontainer) {
   return OK;
 }
 
+/// @brief
+/// @param prev_address
+/// @param s_phead
+/// @param str
+/// @param pcontainer
+/// @return
 int operator_packer(int prev_address, node_t** s_phead, char** str,
                     node_t* pcontainer) {
   int error = OK;

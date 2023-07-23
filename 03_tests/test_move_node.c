@@ -113,7 +113,7 @@ START_TEST(from_queue_to_stack_2) {
 END_TEST
 
 Suite* test_move_node(void) {
-  Suite* s = suite_create("moving node suite");
+  Suite* s = suite_create("moving node tests suite");
 
   TCase* from_st_to_q_tc = tcase_create("moving node from stack to queue");
   tcase_add_test(from_st_to_q_tc, from_stack_to_queue_1);

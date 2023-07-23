@@ -77,7 +77,7 @@ START_TEST(push_VAR_to_queue) {
 END_TEST
 
 Suite* test_push(void) {
-  Suite* s = suite_create("push node to stack/queue suite");
+  Suite* s = suite_create("push node to stack/queue tests suite");
 
   TCase* push_to_stack_tc = tcase_create("push node to stack");
   tcase_add_test(push_to_stack_tc, push_COS_to_stack);
