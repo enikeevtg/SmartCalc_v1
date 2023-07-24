@@ -9,8 +9,11 @@ int main() {
                                test_move_node(),
                                test_close_bracket_processing(),
                                test_end_of_expression_processing(),
-                               test_token_processing(),
+                               test_value_packer(),
+                               test_operator_packer(),
                                test_container_packing(),
+                               test_token_processing(),
+
                                test_errors_convert_infix_to_RPN(),
                                NULL};
 

@@ -78,7 +78,6 @@ START_TEST(token_processing_error_UNDEFINED_TOKEN) {
   // Assert
   ck_assert_ptr_eq(s_head, NULL);
   ck_assert_ptr_eq(q_root, NULL);
-
   ck_assert_int_eq(error, UNDEFINED_TOKEN);
 }
 END_TEST
@@ -97,7 +96,6 @@ START_TEST(token_processing_NUMBER) {
 
   // Assert
   ck_assert_ptr_eq(s_head, NULL);
-
   ck_assert_int_eq(q_root->token_type, NUMBER);
 
   remove_struct(&q_root);
@@ -161,7 +159,6 @@ START_TEST(token_processing_U_MINUS_1) {
 
   // Assert
   ck_assert_ptr_eq(q_root, NULL);
-
   ck_assert_int_eq(s_head->token_type, U_MINUS);
 
   remove_struct(&s_head);
@@ -184,7 +181,6 @@ START_TEST(token_processing_U_MINUS_2) {
 
   // Assert
   ck_assert_ptr_eq(q_root, NULL);
-
   ck_assert_int_eq(s_head->token_type, U_MINUS);
 
   remove_struct(&s_head);

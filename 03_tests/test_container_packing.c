@@ -180,7 +180,6 @@ START_TEST(container_packing_U_PLUS_3) {
   container_packing(prev_address, &current_str, &s_head, &container);
 
   // Assert
-
   ck_assert_int_eq(container.token_type, U_PLUS);
   ck_assert_int_eq(s_head->token_type, POW);
 

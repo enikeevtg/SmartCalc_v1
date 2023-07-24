@@ -30,7 +30,7 @@ int container_packing(int prev_address, char** str, node_t** s_phead,
     }
 
   } else if (strchr(operators_chars, token_symbol)) {
-    error = operator_packer(prev_address, s_phead, str, pcontainer);
+    error = operator_packer(prev_address, str, s_phead, pcontainer);
 
   } else {  // functions case
     if (prev_address == QUEUE || pcontainer->token_type == CLOSE_BRACKET) {
@@ -64,7 +64,7 @@ int value_packer(char** str, node_t* pcontainer) {
 /// @param str
 /// @param pcontainer
 /// @return
-int operator_packer(int prev_address, node_t** s_phead, char** str,
+int operator_packer(int prev_address, char** str, node_t** s_phead,
                     node_t* pcontainer) {
   int error = OK;
   char symb = **str;

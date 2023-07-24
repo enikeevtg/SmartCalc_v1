@@ -84,7 +84,7 @@ int token_processing(int* paddress, char** current_str, node_t** s_phead,
 int container_packing(int prev_address, char** str, node_t** s_phead,
                       node_t* pcontainer);
 int value_packer(char** str, node_t* pcontainer);
-int operator_packer(int prev_address, node_t** s_phead, char** str,
+int operator_packer(int prev_address, char** str, node_t** s_phead,
                     node_t* pcontainer);
 int function_packer(char** str, node_t* pcontainer);
 void create_mult(int prev_address, node_t** s_phead, node_t* pcontainer);
