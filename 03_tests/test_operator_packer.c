@@ -157,6 +157,7 @@ Suite* test_operator_packer(void) {
       tcase_create("operator_packer with errors");
   tcase_add_test(operator_packer_errors_tc,
                  operator_packer_error_INCORRECT_INPUT_OPERATOR);
+  suite_add_tcase(s, operator_packer_errors_tc);
 
   TCase* operator_packer_tc = tcase_create("operator_packer OK");
   tcase_add_test(operator_packer_tc, operator_packer_OPERATOR_MOD);

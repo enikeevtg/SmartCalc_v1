@@ -11,6 +11,7 @@ int main() {
                                test_end_of_expression_processing(),
                                test_value_packer(),
                                test_operator_packer(),
+                               test_function_packer(),
                                test_container_packing(),
                                test_token_processing(),
 

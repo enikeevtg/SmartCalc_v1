@@ -13,6 +13,7 @@ Suite* test_close_bracket_processing(void);
 Suite* test_end_of_expression_processing(void);
 Suite* test_value_packer(void);
 Suite* test_operator_packer(void);
+Suite* test_function_packer(void);
 Suite* test_container_packing(void);
 Suite* test_token_processing(void);
 
