@@ -28,12 +28,7 @@ typedef enum token_type {
   END_OF_EXPRESSION
 } token_t;
 
-typedef enum token_priority {
-  PRIOR_1,
-  PRIOR_2,
-  PRIOR_3,
-  PRIOR_4
-} token_p;
+typedef enum token_priority { PRIOR_1, PRIOR_2, PRIOR_3, PRIOR_4 } token_p;
 
 typedef struct node_tag {
   struct node_tag* pnext;

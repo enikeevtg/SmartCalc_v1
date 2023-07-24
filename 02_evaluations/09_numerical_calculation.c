@@ -11,11 +11,11 @@
 /// @return
 int numerical_calculation(node_t** s_head, token_t function_id) {
   double value_2 = (*s_head)->token_value;
-  if (function_id == ACOS && fabs(value_2) > 1) return ACOS + 100;
-  if (function_id == ASIN && fabs(value_2) > 1) return ASIN + 100;
-  if (function_id == LN && value_2 <= 0) return LN + 100;
-  if (function_id == LOG && value_2 <= 0) return LOG + 100;
-  if (function_id == SQRT && value_2 < 0) return SQRT + 100;
+  if (function_id == ACOS && fabs(value_2) > 1) return ACOS_ERROR;
+  if (function_id == ASIN && fabs(value_2) > 1) return ASIN_ERROR;
+  if (function_id == LN && value_2 <= 0) return LN_ERROR;
+  if (function_id == LOG && value_2 <= 0) return LOG_ERROR;
+  if (function_id == SQRT && value_2 < 0) return SQRT_ERROR;
 
   CALC_FUNCTIONS_POINTERS;
   if (function_id < OPEN_BRACKET) {
