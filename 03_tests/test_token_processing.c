@@ -193,7 +193,7 @@ START_TEST(token_processing_U_MINUS_3) {
   char str[11] = "-";
   char* current_str = str;
   node_t* s_head = NULL;
-  node_t s_node = {NULL, POW, PRIOR_6, 0.0};
+  node_t s_node = {NULL, POW, PRIOR_4, 0.0};
   push(STACK, &s_head, &s_node);
   node_t* q_root = NULL;
   node_t container = {0};

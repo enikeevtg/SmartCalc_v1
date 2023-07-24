@@ -2,7 +2,7 @@
 
 START_TEST(fill_node_COS) {
   // Arrange
-  node_t node_src = {NULL, COS, PRIOR_5, 0.0};
+  node_t node_src = {NULL, COS, PRIOR_4, 0.0};
   node_t node_dest = {0};
   // Act
   fill_node(&node_src, &node_dest);

@@ -1,7 +1,7 @@
 #include "../smart_calc.h"
 
 int main() {
-  char input_str[255] = "-2^2^3+";
+  char input_str[255] = "-2^2^3";
   printf("%s\n", input_str);
 
   node_t* q_root = NULL;

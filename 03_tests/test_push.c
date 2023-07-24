@@ -3,7 +3,7 @@
 START_TEST(push_COS_to_stack) {
   // Arrange
   node_t* s_head = NULL;
-  node_t s_node = {NULL, COS, PRIOR_5, 0.0};
+  node_t s_node = {NULL, COS, PRIOR_4, 0.0};
   int address = STACK;
   // Act
   int error_code = push(address, &s_head, &s_node);

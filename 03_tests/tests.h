@@ -15,6 +15,7 @@ Suite* test_value_packer(void);
 Suite* test_operator_packer(void);
 Suite* test_function_packer(void);
 Suite* test_container_packing(void);
+Suite* test_container_sending(void);
 Suite* test_token_processing(void);
 
 Suite* test_errors_convert_infix_to_RPN(void);

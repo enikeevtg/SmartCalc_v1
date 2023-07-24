@@ -13,6 +13,7 @@ int main() {
                                test_operator_packer(),
                                test_function_packer(),
                                test_container_packing(),
+                               test_container_sending(),
                                test_token_processing(),
 
                                test_errors_convert_infix_to_RPN(),

@@ -2,7 +2,7 @@
 
 START_TEST(from_stack_to_queue_1) {
   // Arrange
-  node_t s_node = {NULL, COS, PRIOR_5, 0.0};
+  node_t s_node = {NULL, COS, PRIOR_4, 0.0};
   node_t* s_head = NULL;
   push(STACK, &s_head, &s_node);
 
@@ -25,7 +25,7 @@ END_TEST
 
 START_TEST(from_stack_to_queue_2) {
   // Arrange
-  node_t s_node_1 = {NULL, COS, PRIOR_5, 0.0};
+  node_t s_node_1 = {NULL, COS, PRIOR_4, 0.0};
   node_t s_node_2 = {NULL, NUMBER, PRIOR_1, 100.500};
 
   node_t* s_head = NULL;
@@ -58,7 +58,7 @@ END_TEST
 
 START_TEST(from_queue_to_stack_1) {
   // Arrange
-  node_t q_node = {NULL, COS, PRIOR_5, 0.0};
+  node_t q_node = {NULL, COS, PRIOR_4, 0.0};
   node_t* q_root = NULL;
   push(QUEUE, &q_root, &q_node);
 
@@ -81,7 +81,7 @@ END_TEST
 
 START_TEST(from_queue_to_stack_2) {
   // Arrange
-  node_t q_node_1 = {NULL, COS, PRIOR_5, 0.0};
+  node_t q_node_1 = {NULL, COS, PRIOR_4, 0.0};
   node_t q_node_2 = {NULL, NUMBER, PRIOR_1, 100.500};
   node_t* q_root = NULL;
   push(QUEUE, &q_root, &q_node_1);

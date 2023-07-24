@@ -24,7 +24,7 @@ START_TEST(close_bracket_error_INCORRECT_INPUT) {
   // Arrange
   int prev_address = STACK;
   node_t* s_head = NULL;
-  node_t s_node = {NULL, POW, PRIOR_6, 0.0};
+  node_t s_node = {NULL, POW, PRIOR_3, 0.0};
   push(prev_address, &s_head, &s_node);
 
   node_t* q_root = NULL;

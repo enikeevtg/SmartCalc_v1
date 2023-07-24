@@ -8,7 +8,7 @@ START_TEST(end_of_expression_error_UNBALANCED_BRACKETS) {
 
   node_t* s_head = NULL;
   node_t s_node_1 = {NULL, OPEN_BRACKET, PRIOR_1, 0.0};
-  node_t s_node_2 = {NULL, U_PLUS, PRIOR_5, 0.0};
+  node_t s_node_2 = {NULL, U_PLUS, PRIOR_4, 0.0};
   push(STACK, &s_head, &s_node_1);
   push(STACK, &s_head, &s_node_2);
 
@@ -42,7 +42,7 @@ START_TEST(end_of_expression_OK) {
   //         |____U_MINUS_____|           |--------|----|--------|----
 
   node_t* s_head = NULL;
-  node_t s_node_1 = {NULL, U_MINUS, PRIOR_5, 0.0};
+  node_t s_node_1 = {NULL, U_MINUS, PRIOR_4, 0.0};
   node_t s_node_2 = {NULL, PLUS, PRIOR_2, 0.0};
   push(STACK, &s_head, &s_node_1);
   push(STACK, &s_head, &s_node_2);
