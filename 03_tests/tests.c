@@ -15,8 +15,8 @@ int main() {
                                test_container_packing(),
                                test_container_sending(),
                                test_token_processing(),
-
                                test_errors_convert_infix_to_RPN(),
+                               test_math_operations(),
                                NULL};
 
   for (int i = 0; smart_calc_tests[i] != NULL; i++) {

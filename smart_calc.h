@@ -94,8 +94,8 @@ int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
 // evaluator
 int evaluate_expression(node_t* q_root, double variable, double* result);
 int numerical_calculation(node_t** s_phead, token_t function_id);
-double u_plus(double value_2);
-double u_minus(double value_2);
+double u_plus(double value);
+double u_minus(double value);
 double add_calc(double value_1, double value_2);
 double sub_calc(double value_1, double value_2);
 double mult_calc(double value_1, double value_2);

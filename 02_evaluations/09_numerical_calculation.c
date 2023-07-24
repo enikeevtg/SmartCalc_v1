@@ -31,9 +31,9 @@ int numerical_calculation(node_t** s_head, token_t function_id) {
   return OK;
 }
 
-double u_plus(double value_2) { return value_2; }
+double u_plus(double value) { return value; }
 
-double u_minus(double value_2) { return -value_2; }
+double u_minus(double value) { return -value; }
 
 double add_calc(double value_1, double value_2) { return value_1 + value_2; }
 
@@ -44,7 +44,7 @@ double mult_calc(double value_1, double value_2) { return value_1 * value_2; }
 double div_calc(double value_1, double value_2) { return value_1 / value_2; }
 
 double mod_calc(double value_1, double value_2) {
-  return (double)((int)value_1 * (int)value_2);
+  return (double)((int)value_1 % (int)value_2);
 }
 
 double pow_calc(double value_1, double value_2) {

@@ -17,7 +17,7 @@ Suite* test_function_packer(void);
 Suite* test_container_packing(void);
 Suite* test_container_sending(void);
 Suite* test_token_processing(void);
-
 Suite* test_errors_convert_infix_to_RPN(void);
+Suite* test_math_operations(void);
 
 #endif // SMARTCALC_03_TESTS_TESTS_H_

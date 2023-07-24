@@ -13,7 +13,6 @@ else ifeq ($(OS), Linux)
 	REPORT_OPEN = xdg-open
 endif
 
-
 # UTILITIES OPTIONS
 DEBUG = -DDEBUG
 CF = -Wall -Werror -Wextra
