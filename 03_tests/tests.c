@@ -16,6 +16,7 @@ int main() {
                                test_container_sending(),
                                test_token_processing(),
                                test_errors_convert_infix_to_RPN(),
+                               test_convert_infix_to_RPN(),
                                test_math_operations(),
                                test_numerical_calculation(),
                                NULL};

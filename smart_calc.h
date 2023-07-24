@@ -16,6 +16,7 @@
 #endif
 
 #define MAX_INPUT_STR_LEN 255
+#define TOLERANCE 1E-7
 
 enum error_codes {
   OK,

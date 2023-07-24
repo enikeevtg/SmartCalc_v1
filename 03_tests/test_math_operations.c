@@ -6,7 +6,7 @@ START_TEST(u_plus_test) {
   // Act
   double result = u_plus(value);
   // Assert
-  ck_assert_double_eq_tol(result, value, 7);
+  ck_assert_double_eq_tol(result, value, TOLERANCE);
 }
 END_TEST
 
@@ -16,7 +16,7 @@ START_TEST(u_minus_test) {
   // Act
   double result = u_minus(value);
   // Assert
-  ck_assert_double_eq_tol(result, -value, 7);
+  ck_assert_double_eq_tol(result, -value, TOLERANCE);
 }
 END_TEST
 
@@ -27,7 +27,7 @@ START_TEST(add_test) {
   // Act
   double result = add_calc(value_1, value_2);
   // Assert
-  ck_assert_double_eq_tol(result, value_1 + value_2, 7);
+  ck_assert_double_eq_tol(result, value_1 + value_2, TOLERANCE);
 }
 END_TEST
 
@@ -38,7 +38,7 @@ START_TEST(sub_test) {
   // Act
   double result = sub_calc(value_1, value_2);
   // Assert
-  ck_assert_double_eq_tol(result, value_1 - value_2, 7);
+  ck_assert_double_eq_tol(result, value_1 - value_2, TOLERANCE);
 }
 END_TEST
 
@@ -49,7 +49,7 @@ START_TEST(mult_test) {
   // Act
   double result = mult_calc(value_1, value_2);
   // Assert
-  ck_assert_double_eq_tol(result, value_1 * value_2, 7);
+  ck_assert_double_eq_tol(result, value_1 * value_2, TOLERANCE);
 }
 END_TEST
 
@@ -60,7 +60,7 @@ START_TEST(div_test) {
   // Act
   double result = div_calc(value_1, value_2);
   // Assert
-  ck_assert_double_eq_tol(result, value_1 / value_2, 7);
+  ck_assert_double_eq_tol(result, value_1 / value_2, TOLERANCE);
 }
 END_TEST
 
@@ -71,7 +71,7 @@ START_TEST(mod_test) {
   // Act
   double result = mod_calc(value_1, value_2);
   // Assert
-  ck_assert_double_eq_tol(result, (double)((int)value_1 % (int)value_2), 7);
+  ck_assert_double_eq_tol(result, (double)((int)value_1 % (int)value_2), TOLERANCE);
 }
 END_TEST
 
@@ -82,7 +82,7 @@ START_TEST(pow_test) {
   // Act
   double result = pow_calc(value_1, value_2);
   // Assert
-  ck_assert_double_eq_tol(result, pow(value_1, value_2), 7);
+  ck_assert_double_eq_tol(result, pow(value_1, value_2), TOLERANCE);
 }
 END_TEST
 

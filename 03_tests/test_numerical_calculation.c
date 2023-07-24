@@ -65,7 +65,7 @@ START_TEST(calculation_SIN) {
   int error = numerical_calculation(&s_head, SIN);
   // Assert
   ck_assert_int_eq(error, OK);
-  ck_assert_double_eq_tol(s_head->token_value, sin(value), 7);
+  ck_assert_double_eq_tol(s_head->token_value, sin(value), TOLERANCE);
 
   remove_struct(&s_head);
 }
@@ -81,7 +81,7 @@ START_TEST(calculation_LN) {
   int error = numerical_calculation(&s_head, LN);
   // Assert
   ck_assert_int_eq(error, OK);
-  ck_assert_double_eq_tol(s_head->token_value, log(value), 7);
+  ck_assert_double_eq_tol(s_head->token_value, log(value), TOLERANCE);
 
   remove_struct(&s_head);
 }
@@ -97,7 +97,7 @@ START_TEST(calculation_SQRT) {
   int error = numerical_calculation(&s_head, SQRT);
   // Assert
   ck_assert_int_eq(error, OK);
-  ck_assert_double_eq_tol(s_head->token_value, sqrt(value), 7);
+  ck_assert_double_eq_tol(s_head->token_value, sqrt(value), TOLERANCE);
 
   remove_struct(&s_head);
 }
@@ -116,7 +116,7 @@ START_TEST(calculation_DIV) {
   int error = numerical_calculation(&s_head, DIV);
   // Assert
   ck_assert_int_eq(error, OK);
-  ck_assert_double_eq_tol(s_head->token_value, value_1 / value_2, 7);
+  ck_assert_double_eq_tol(s_head->token_value, value_1 / value_2, TOLERANCE);
 
   remove_struct(&s_head);
 }
@@ -135,7 +135,7 @@ START_TEST(calculation_POW) {
   int error = numerical_calculation(&s_head, POW);
   // Assert
   ck_assert_int_eq(error, OK);
-  ck_assert_double_eq_tol(s_head->token_value, pow(value_1, value_2), 7);
+  ck_assert_double_eq_tol(s_head->token_value, pow(value_1, value_2), TOLERANCE);
 
   remove_struct(&s_head);
 }
