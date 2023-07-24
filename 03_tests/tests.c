@@ -8,9 +8,10 @@ int main() {
                                test_fill_node(),
                                test_move_node(),
                                test_close_bracket_processing(),
-                               test_errors_convert_infix_to_RPN(),
                                test_end_of_expression_processing(),
                                test_token_processing(),
+                               test_container_packing(),
+                               test_errors_convert_infix_to_RPN(),
                                NULL};
 
   for (int i = 0; smart_calc_tests[i] != NULL; i++) {

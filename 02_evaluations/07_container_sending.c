@@ -32,7 +32,7 @@ int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
       error = move_node_from_stack_to_queue(s_phead, q_phead);
     }
     if (!error) error = push(STACK, s_phead, pcontainer);
-    
+
   } else {  // NUMBER or VAR
     *paddress = QUEUE;
     error = push(*paddress, q_phead, pcontainer);
