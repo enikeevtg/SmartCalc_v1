@@ -28,8 +28,10 @@ int container_packing(int prev_address, char** str, node_t** s_phead,
     } else {
       error = value_packer(str, pcontainer);
     }
+
   } else if (strchr(operators_chars, token_symbol)) {
     error = operator_packer(prev_address, s_phead, str, pcontainer);
+  
   } else {  // functions case
     if (prev_address == QUEUE || pcontainer->token_type == CLOSE_BRACKET) {
       create_mult(prev_address, s_phead, pcontainer);

@@ -17,12 +17,14 @@ int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
   *paddress = STACK;
   if (pcontainer->token_type <= OPEN_BRACKET) {  // functions and '('
     error = push(*paddress, s_phead, pcontainer);
+
   } else if (pcontainer->token_type < POW) {  // left-associative operators
     while (!error && *s_phead != NULL &&
            pcontainer->token_priority <= (*s_phead)->token_priority) {
       error = move_node_from_stack_to_queue(s_phead, q_phead);
     }
     if (!error) error = push(*paddress, s_phead, pcontainer);
+
   } else if (pcontainer->token_type == POW) {  // right-associative POW
     while (!error && *s_phead != NULL &&
            pcontainer->token_priority <= (*s_phead)->token_priority &&
@@ -30,7 +32,8 @@ int container_sending(int* paddress, node_t** s_phead, node_t** q_phead,
       error = move_node_from_stack_to_queue(s_phead, q_phead);
     }
     if (!error) error = push(STACK, s_phead, pcontainer);
-  } else {
+    
+  } else {  // NUMBER or VAR
     *paddress = QUEUE;
     error = push(*paddress, q_phead, pcontainer);
   }

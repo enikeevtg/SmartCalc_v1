@@ -66,7 +66,6 @@ START_TEST(close_bracket_error_UNBALANCED_BRACKETS) {
 }
 END_TEST
 
-
 START_TEST(close_bracket_processing_OK) {
   // Arrange
   //         |      PLUS      |           |--------|-----
@@ -109,7 +108,8 @@ Suite* test_close_bracket_processing(void) {
       tcase_create("close_bracket_processing errors");
   tcase_add_test(close_bracket_errors_tc, close_bracket_error_EMPTY_BRACKETS);
   tcase_add_test(close_bracket_errors_tc, close_bracket_error_INCORRECT_INPUT);
-  tcase_add_test(close_bracket_errors_tc, close_bracket_error_UNBALANCED_BRACKETS);
+  tcase_add_test(close_bracket_errors_tc,
+                 close_bracket_error_UNBALANCED_BRACKETS);
   suite_add_tcase(s, close_bracket_errors_tc);
 
   TCase* close_bracket_tc = tcase_create("close_bracket_processing OK");

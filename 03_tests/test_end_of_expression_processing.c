@@ -79,7 +79,8 @@ Suite* test_end_of_expression_processing(void) {
 
   TCase* end_of_expression_errors_tc =
       tcase_create("end_of_expression_processing errors");
-  tcase_add_test(end_of_expression_errors_tc, end_of_expression_error_UNBALANCED_BRACKETS);
+  tcase_add_test(end_of_expression_errors_tc,
+                 end_of_expression_error_UNBALANCED_BRACKETS);
   suite_add_tcase(s, end_of_expression_errors_tc);
 
   TCase* end_of_expression_tc = tcase_create("end_of_expression_processing OK");
