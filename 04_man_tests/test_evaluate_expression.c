@@ -1,10 +1,11 @@
 #include "../smart_calc.h"
 
 int main() {
-  char input_str[255] = "-2^2^3";
+  char input_str[255] = "5x";
   printf("%s\n", input_str);
 
   node_t* q_root = NULL;
+  double variable = 2;
   double result = 0;
 
   int error = convert_infix_to_RPN(input_str, &q_root);
@@ -17,7 +18,7 @@ int main() {
     i++;
   }
 
-  if (!error) error = evaluate_expression(q_root, 0, &result);
+  if (!error) error = evaluate_expression(q_root, variable, &result);
 
   if (error) {
     ERRORS_MESSAGES;

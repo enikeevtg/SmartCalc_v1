@@ -7,7 +7,7 @@ START_TEST(container_packing_error_INCORRECT_INPUT_NUMBER) {
   char* current_str = str;
   node_t* s_head = NULL;
 
-  node_t container = {0};
+  node_t container = {NULL, NUMBER, PRIOR_1, 16.42};
 
   // Act
   int error =

@@ -21,7 +21,7 @@ int convert_infix_to_RPN(const char* str, node_t** q_proot) {
   node_t* q_root = NULL;
   int address = STACK;
   node_t container = {0};
-  const char token_chars[] = "1234567890.+-*/^%(cstal";
+  const char token_chars[] = "1234567890.+-*/^%(cstalx";
 
   while (!error && !(*current_str == '\0' && s_head == NULL)) {
     if (*current_str == ')') {

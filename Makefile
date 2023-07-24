@@ -37,12 +37,13 @@ OBJ += $(patsubst $(EVAL_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
 MAN_TESTS_DIR = ./04_man_tests/
 TESTS_DIR = ./03_tests/
 TESTS_SRC = $(wildcard $(TESTS_DIR)*.c)
-TEST_EXE = tests
+TEST_EXE = ./tests_runner
 
 # BUILD
 all:
 
 build: 
+
 
 objects: makeobjdir $(OBJ)
 
@@ -55,22 +56,23 @@ $(OBJ_DIR)%.o: $(DATA_STRUCT_DIR)%.c
 $(OBJ_DIR)%.o: $(EVAL_DIR)%.c
 	@$(CC) $(CF) $(STD) -c $^ -o $@
 
-
 # TESTS
 test: clean
-	@$(CC) $(CF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
-	@$(LEAKS) ./$(TEST_EXE)
+	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
+	@$(LEAKS) $(TEST_EXE)
 
 gcov: gcov_report
 
-gcov_report: test
+gcov_report: clean
+	@$(CC) $(CF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
+	@$(LEAKS) $(TEST_EXE)
 	@lcov -t "./gcov" -o report.info --no-external -c -d .
 	@genhtml -o report report.info
 	@gcovr -r . --html-details -o ./report/coverage_report.html
 	@$(REPORT_OPEN) ./report/index.html
 	@rm -rf *.gcno *.gcda gcov_test *.info
 
-tmp: clean
+man_test: clean
 #	$(CC) $(ATTEMPT_DIR)*.c $(DEBUG)
 #	$(CC) $(MAN_TESTS_DIR)test_structures.c $(SRC)
 #	$(CC) $(MAN_TESTS_DIR)test_convert_infix_to_RPN.c $(SRC) $(DEBUG)

@@ -36,7 +36,7 @@ enum error_codes {
   SQRT_ERROR
 };
 
-#define ERRORS_MESSAGES_NUMBERS 14
+#define ERRORS_MESSAGES_NUMBERS 15
 #define ERRORS_MESSAGE_MAX_SIZE 22
 #define ERRORS_MESSAGES                                                 \
   char errors_msg[ERRORS_MESSAGES_NUMBERS][ERRORS_MESSAGE_MAX_SIZE] = { \
@@ -49,7 +49,12 @@ enum error_codes {
       "UNBALANCED_BRACKETS",                                            \
       "EMPTY_BRACKETS",                                                 \
       "INCORRECT_INPUT",                                                \
-      "EMPTY_QUEUE"}
+      "EMPTY_QUEUE",                                                    \
+      "ACOS_ARGUMENT_ERROR",                                            \
+      "ASIN_ARGUMENT_ERROR",                                            \
+      "LN_ARGUMENT_ERROR",                                              \
+      "LOG_ARGUMENT_ERROR",                                             \
+      "SQRT_ARGUMENT_ERROR"}
 
 #define MATH_FUNCTIONS_NUMBER 9
 #define MATH_FUNCTIONS_NAMES_LENGTH 5
@@ -90,6 +95,7 @@ int token_processing(int* paddress, char** current_str, node_t** s_phead,
 int container_packing(int prev_address, char** str, node_t** s_phead,
                       node_t* pcontainer);
 int value_packer(char** str, node_t* pcontainer);
+int variable_packer(char** str, node_t* pcontainer);
 int operator_packer(int prev_address, char** str, node_t** s_phead,
                     node_t* pcontainer);
 int function_packer(char** str, node_t* pcontainer);

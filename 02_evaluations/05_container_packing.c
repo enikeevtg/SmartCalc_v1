@@ -20,13 +20,24 @@ int container_packing(int prev_address, char** str, node_t** s_phead,
   char token_symbol = **str;
 
   if (strchr(numbers_chars, token_symbol)) {
-    if (prev_address == QUEUE && pcontainer->token_type != CLOSE_BRACKET) {
+    if (pcontainer->token_type == NUMBER) {
       error = INCORRECT_INPUT;
     } else if (prev_address == QUEUE &&
-               pcontainer->token_type == CLOSE_BRACKET) {  // )NUM -> )*NUM
+               (pcontainer->token_type == CLOSE_BRACKET ||
+                pcontainer->token_type == VAR)) {  // )NUM -> )*NUM
       create_mult(prev_address, s_phead, pcontainer);
     } else {
       error = value_packer(str, pcontainer);
+    }
+
+  } else if (token_symbol == 'x') {
+    if (pcontainer->token_type == VAR) {
+      error = INCORRECT_INPUT;
+      // NUMBER of ) VAR -> NUM or ) *VAR:
+    } else if (prev_address == QUEUE) {
+      create_mult(prev_address, s_phead, pcontainer);
+    } else {
+      error = variable_packer(str, pcontainer);
     }
 
   } else if (strchr(operators_chars, token_symbol)) {
@@ -55,6 +66,16 @@ int value_packer(char** str, node_t* pcontainer) {
     *str += 1;
     *str += strspn(*str, numbers_chars);
   }
+  return OK;
+}
+
+/// @brief
+/// @param str
+/// @param pcontainer
+/// @return
+int variable_packer(char** str, node_t* pcontainer) {
+  pcontainer->token_type = VAR;
+  *str += 1;
   return OK;
 }
 
@@ -116,7 +137,7 @@ int operator_packer(int prev_address, char** str, node_t** s_phead,
 int function_packer(char** str, node_t* pcontainer) {
   int error = OK;
   char* bracket = strchr(*str, '(');
-  char* after_function_char_ptr = strpbrk(*str, "()1234567890.+-*/^%");
+  char* after_function_char_ptr = strpbrk(*str, "()1234567890.x+-*/^%");
   if (bracket == NULL || bracket > after_function_char_ptr)
     error = INCORRECT_INPUT;
 
