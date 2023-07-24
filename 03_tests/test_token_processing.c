@@ -15,7 +15,28 @@ START_TEST(token_processing_error_INCORRECT_INPUT_NUMBER) {
 
   // Assert
   ck_assert_ptr_eq(s_head, NULL);
-  // ck_assert_ptr_eq(q_root, NULL);
+  ck_assert_ptr_eq(q_root, NULL);
+
+  ck_assert_int_eq(error, INCORRECT_INPUT);
+}
+END_TEST
+
+START_TEST(token_processing_error_INCORRECT_INPUT_VAR) {
+  // Arrange
+  int prev_address = QUEUE;
+  char str[11] = "x";
+  char* current_str = str;
+  node_t* s_head = NULL;
+  node_t* q_root = NULL;
+  node_t container = {NULL, VAR, PRIOR_1, 0};
+
+  // Act
+  int error = token_processing(&prev_address, &current_str, &s_head, &q_root,
+                               &container);
+
+  // Assert
+  ck_assert_ptr_eq(s_head, NULL);
+  ck_assert_ptr_eq(q_root, NULL);
 
   ck_assert_int_eq(error, INCORRECT_INPUT);
 }
@@ -119,6 +140,52 @@ START_TEST(token_processing_NUMBER_after_CLOSE_BRACKET) {
 
   ck_assert_int_eq(s_head->token_type, MULT);
   ck_assert_int_eq(q_root->token_type, NUMBER);
+
+  remove_struct(&q_root);
+  remove_struct(&s_head);
+}
+END_TEST
+
+START_TEST(token_processing_NUMBER_after_VAR) {
+  // Arrange
+  int prev_address = QUEUE;
+  char str[11] = "123.456";
+  char* current_str = str;
+  node_t* s_head = NULL;
+  node_t* q_root = NULL;
+  node_t container = {NULL, VAR, PRIOR_1, 0.0};
+
+  // Act
+  token_processing(&prev_address, &current_str, &s_head, &q_root, &container);
+  token_processing(&prev_address, &current_str, &s_head, &q_root, &container);
+
+  // Assert
+
+  ck_assert_int_eq(s_head->token_type, MULT);
+  ck_assert_int_eq(q_root->token_type, NUMBER);
+
+  remove_struct(&q_root);
+  remove_struct(&s_head);
+}
+END_TEST
+
+START_TEST(token_processing_VAR_after_NUMBER) {
+  // Arrange
+  int prev_address = QUEUE;
+  char str[11] = "x";
+  char* current_str = str;
+  node_t* s_head = NULL;
+  node_t* q_root = NULL;
+  node_t container = {NULL, NUMBER, PRIOR_1, 11.2};
+
+  // Act
+  token_processing(&prev_address, &current_str, &s_head, &q_root, &container);
+  token_processing(&prev_address, &current_str, &s_head, &q_root, &container);
+
+  // Assert
+
+  ck_assert_int_eq(s_head->token_type, MULT);
+  ck_assert_int_eq(q_root->token_type, VAR);
 
   remove_struct(&q_root);
   remove_struct(&s_head);
@@ -240,6 +307,8 @@ Suite* test_token_processing(void) {
   tcase_add_test(token_processing_errors_tc,
                  token_processing_error_INCORRECT_INPUT_NUMBER);
   tcase_add_test(token_processing_errors_tc,
+                 token_processing_error_INCORRECT_INPUT_VAR);
+  tcase_add_test(token_processing_errors_tc,
                  token_processing_error_INCORRECT_INPUT_OPERATOR);
   tcase_add_test(token_processing_errors_tc,
                  token_processing_INCORRECT_INPUT_FUNCTION);
@@ -251,6 +320,8 @@ Suite* test_token_processing(void) {
   tcase_add_test(token_processing_tc, token_processing_NUMBER);
   tcase_add_test(token_processing_tc,
                  token_processing_NUMBER_after_CLOSE_BRACKET);
+  tcase_add_test(token_processing_tc, token_processing_NUMBER_after_VAR);
+  tcase_add_test(token_processing_tc, token_processing_VAR_after_NUMBER);
   tcase_add_test(token_processing_tc, token_processing_OPERATOR);
   tcase_add_test(token_processing_tc, token_processing_U_MINUS_1);
   tcase_add_test(token_processing_tc, token_processing_U_MINUS_2);

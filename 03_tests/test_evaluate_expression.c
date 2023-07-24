@@ -279,6 +279,42 @@ START_TEST(evaluation_9) {
 }
 END_TEST
 
+START_TEST(evaluation_10) {
+  // Arrange
+  char str[255] = "5x^2";
+  double variable = 2.;
+  double reference_result = 5 * pow(variable, 2.);
+  node_t* q_root = NULL;
+  double result = 0;
+
+  // Act
+  int error = convert_infix_to_RPN(str, &q_root);
+  error = evaluate_expression(q_root, variable, &result);
+
+  // Assert
+  ck_assert_int_eq(error, OK);
+  ck_assert_double_eq_tol(result, reference_result, TOLERANCE);
+}
+END_TEST
+
+START_TEST(evaluation_11) {
+  // Arrange
+  char str[255] = "sin(x / 2)";
+  double variable = 3.1415;
+  double reference_result = sin(variable / 2.);
+  node_t* q_root = NULL;
+  double result = 0;
+
+  // Act
+  int error = convert_infix_to_RPN(str, &q_root);
+  error = evaluate_expression(q_root, variable, &result);
+
+  // Assert
+  ck_assert_int_eq(error, OK);
+  ck_assert_double_eq_tol(result, reference_result, TOLERANCE);
+}
+END_TEST
+
 Suite* test_evaluate_expression(void) {
   Suite* s = suite_create("evaluations tests suite");
 
@@ -305,6 +341,8 @@ Suite* test_evaluate_expression(void) {
   tcase_add_test(evaluations_tc, evaluation_7);
   tcase_add_test(evaluations_tc, evaluation_8);
   tcase_add_test(evaluations_tc, evaluation_9);
+  tcase_add_test(evaluations_tc, evaluation_10);
+  tcase_add_test(evaluations_tc, evaluation_11);
   suite_add_tcase(s, evaluations_tc);
 
   return s;
