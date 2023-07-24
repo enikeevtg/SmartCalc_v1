@@ -21,5 +21,6 @@ Suite* test_errors_convert_infix_to_RPN(void);
 Suite* test_convert_infix_to_RPN(void);
 Suite* test_math_operations(void);
 Suite* test_numerical_calculation(void);
+Suite* test_evaluate_expression(void);
 
 #endif // SMARTCALC_03_TESTS_TESTS_H_

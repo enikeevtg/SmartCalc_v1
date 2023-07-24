@@ -19,6 +19,7 @@ int main() {
                                test_convert_infix_to_RPN(),
                                test_math_operations(),
                                test_numerical_calculation(),
+                               test_evaluate_expression(),
                                NULL};
 
   for (int i = 0; smart_calc_tests[i] != NULL; i++) {

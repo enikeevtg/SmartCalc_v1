@@ -71,7 +71,8 @@ START_TEST(mod_test) {
   // Act
   double result = mod_calc(value_1, value_2);
   // Assert
-  ck_assert_double_eq_tol(result, (double)((int)value_1 % (int)value_2), TOLERANCE);
+  ck_assert_double_eq_tol(result, (double)((int)value_1 % (int)value_2),
+                          TOLERANCE);
 }
 END_TEST
 
