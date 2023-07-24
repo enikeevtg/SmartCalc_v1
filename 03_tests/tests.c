@@ -9,6 +9,7 @@ int main() {
                                test_move_node(),
                                test_close_bracket_processing(),
                                test_errors_convert_infix_to_RPN(),
+                               test_end_of_expression_processing(),
                                NULL};
 
   for (int i = 0; smart_calc_tests[i] != NULL; i++) {

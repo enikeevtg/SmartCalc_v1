@@ -10,6 +10,7 @@ Suite* test_push(void);
 Suite* test_fill_node(void);
 Suite* test_move_node(void);
 Suite* test_close_bracket_processing(void);
+Suite* test_end_of_expression_processing(void);
 
 Suite* test_errors_convert_infix_to_RPN(void);
 
