@@ -155,7 +155,6 @@ START_TEST(container_packing_U_PLUS_2) {
   node_t* s_head = NULL;
   node_t s_node = {NULL, OPEN_BRACKET, PRIOR_1, 0.0};
   push(STACK, &s_head, &s_node);
-
   node_t container = {0};
 
   // Act
@@ -163,6 +162,8 @@ START_TEST(container_packing_U_PLUS_2) {
 
   // Assert
   ck_assert_int_eq(container.token_type, U_PLUS);
+
+  remove_struct(&s_head);
 }
 END_TEST
 
