@@ -20,6 +20,7 @@ int main() {
                                test_math_operations(),
                                test_numerical_calculation(),
                                test_evaluate_expression(),
+                               yakov_tests(),
                                NULL};
 
   for (int i = 0; smart_calc_tests[i] != NULL; i++) {
