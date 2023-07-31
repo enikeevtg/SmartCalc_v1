@@ -11,6 +11,8 @@
 /// When function is doing it is redefined to queue head,
 /// but in the end of function it is redefined to queue node root pointer
 /// @return error code
+/// @warning this function makes memory allocate for queue structure (*q_proot),
+/// but does not free it
 int convert_infix_to_RPN(const char* str, node_t** q_proot) {
   if (strlen(str) > MAX_INPUT_STR_LEN) return TOO_LONG_EXPRESSION;
   if (strlen(str) == 0) return EMPTY_EXPRESSION;

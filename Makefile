@@ -39,6 +39,8 @@ TESTS_DIR = ./03_tests/
 TESTS_SRC = $(wildcard $(TESTS_DIR)*.c)
 TEST_EXE = ./tests_runner
 
+CREDIT_DIR = ./06_credit_calculator/
+
 # BUILD
 all:
 
@@ -81,10 +83,10 @@ man_test: clean
 
 # SERVICES
 style:
-	clang-format --style=google -n *.h $(SRC) $(TESTS_SRC)
+	clang-format --style=google -n *.h $(SRC) $(TESTS_SRC) $(CREDIT_DIR)*
 
 gost:
-	clang-format --style=google -i *.h $(SRC) $(TESTS_SRC)
+	clang-format --style=google -i *.h $(SRC) $(TESTS_SRC) $(CREDIT_DIR)*
 
 clean:
 	@$(RM) a.out
