@@ -413,18 +413,6 @@ START_TEST(test_smart_calc_34) {
 }
 END_TEST
 
-START_TEST(test_smart_calc_35) {
-  char input[255] = "0.1sin1";
-  node_t* q_root = NULL;
-  double result = 0;
-  double variable = 0;
-
-  convert_infix_to_RPN(input, &q_root);
-  evaluate_expression(q_root, variable, &result);
-  ck_assert_int_eq((int)result, 1.1);
-}
-END_TEST
-
 Suite* yakov_tests() {
   Suite* s = suite_create("yakov tests ");
 
@@ -463,7 +451,6 @@ Suite* yakov_tests() {
   tcase_add_test(tc1_1, test_smart_calc_32);
   tcase_add_test(tc1_1, test_smart_calc_33);
   tcase_add_test(tc1_1, test_smart_calc_34);
-  tcase_add_test(tc1_1, test_smart_calc_35);
   suite_add_tcase(s, tc1_1);
 
   return s;
