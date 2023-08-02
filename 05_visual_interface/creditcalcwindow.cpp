@@ -42,7 +42,7 @@ void CreditCalcWindow::on_pushButton_calculate_clicked() {
     ui->statusBar->showMessage("Credit term: minimum value is 1");
   } else if (scale == 1 && data.term > 600) {
     ui->statusBar->showMessage("Credit term: maximum value is 600");
-  } else if (scale == 12 && data.term > 50) {
+  } else if (scale == 12 && data.term > 600) {
     ui->statusBar->showMessage("Credit term: maximum value is 50");
   } else if (data.rate < 0.01) {
     ui->statusBar->showMessage("Credit rate: minimum value is 0.01");

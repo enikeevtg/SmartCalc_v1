@@ -1,5 +1,5 @@
-#ifndef CREDITCALCWINDOW_H
-#define CREDITCALCWINDOW_H
+#ifndef SMARTCALC_05_VISUAL_INTERFACE_CREDITCALCWINDOW_H_
+#define SMARTCALC_05_VISUAL_INTERFACE_CREDITCALCWINDOW_H_
 
 #include <QMainWindow>
 
@@ -27,4 +27,4 @@ class CreditCalcWindow : public QMainWindow {
   Ui::CreditCalcWindow *ui;
 };
 
-#endif  // CREDITCALCWINDOW_H
+#endif  // SMARTCALC_05_VISUAL_INTERFACE_CREDITCALCWINDOW_H_

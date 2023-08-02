@@ -46,18 +46,18 @@ TESTS_SRC = $(wildcard $(TESTS_DIR)*.c)
 TEST_EXE = ./tests_runner
 
 # BUILD
-all: clean install launch
+all: clean style test gcov_report install dvi dist
 
 # TESTS
 test: clean
 	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
-	$(TEST_EXE)
+	@$(TEST_EXE)
 
 gcov: gcov_report
 
 gcov_report: clean
 	@$(CC) $(CF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
-	@$(LEAKS) $(TEST_EXE)
+	@$(TEST_EXE)
 	@lcov -t "./gcov" -o report.info --no-external -c -d .
 	@genhtml -o report report.info
 	@gcovr -r . --html-details -o ./report/coverage_report.html
@@ -90,8 +90,7 @@ dvi:
 	open $(SRC_DIR)readme.html
 
 dist:
-	@if [ ! -d $(BUILD_DIR)$(APP) ] ; then echo "creating build" ; make install; fi
-	@if [ -d $(BUILD_DIR) ] ; then tar -zcvf archive.tar $(BUILD_DIR); else echo "build not exists, error!"; exit 1; fi
+	tar -zcvf SmartCalc_v1.tar $(ALL_DIRS) Makefile
 
 app_leaks:
 	$(LEAKS) $(BUILD_DIR)$(APP)/Contents/MacOS/SmartCalc_v1

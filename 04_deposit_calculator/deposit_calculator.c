@@ -16,7 +16,7 @@ int deposit_calculation(struct deposit_input* pdata,
   double last_earning = 0;
   double earnings = 0;
   for (int i = 1; error == VALID_ACCOUNT_BALANCE && i <= accruals_number; i++) {
-    for (int j = i * periodicity - 1; j < i * periodicity; j++) {
+    for (int j = (i - 1) * periodicity; j < i * periodicity; j++) {
       total += replenishments[j] - withdrawals[j + 1];
     }
     last_earning = total * deposit_rate / 100.0 * (double)periodicity / 12.0;

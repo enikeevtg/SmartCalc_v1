@@ -94,9 +94,7 @@ MainWindow::MainWindow(QWidget* parent)
   ui->toolBar->setMovable(false);
 }
 
-MainWindow::~MainWindow() {
-  delete ui;
-}
+MainWindow::~MainWindow() { delete ui; }
 
 ////////////////////////////////////////////////////////////////////////////////
 // FINANCIAL MODES
@@ -519,73 +517,3 @@ void MainWindow::graphPlot(double x_min, double x_max, double y_min,
     ui->expression_graph->replot();
   }
 }
-// line 534
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// GRAPH
-// double stepSizeCalculation(QVector<double> x, QVector<double> y, double
-// scale) {
-//   QVector<double> delta_x = x.last(2);
-//   QVector<double> delta_y = y.last(2);
-//   double delta = sqrt(pow((delta_x.last() - delta_x.first()), 2) +
-//   pow((delta_y.last() - delta_y.first()), 2)); if (delta > scale)
-
-//}
-
-// void MainWindow::graphPlot(double x_min, double x_max, double y_min, double
-// y_max) {
-//     QString input_label_text = ui->label_input->text();
-//     char* str_for_calc = new char(input_label_text.length());
-//     QByteArray tmp_byte_array = input_label_text.toLatin1();
-//     strlcpy(str_for_calc, tmp_byte_array, input_label_text.length() + 1);
-
-//    double variable = x_min;
-//    double result = 0.0;
-//    node_t* q_root = NULL;
-
-//    int error = convert_infix_to_RPN(str_for_calc, &q_root);
-//    QVector<double> x, y;
-//    if (error != OK) {
-//        ERRORS_MESSAGES;
-//        ui->label_output->setText(errors_msg[error]);
-//    } else {
-//        double px_scale = ui->expression_graph->width() / (x_max - x_min);
-//        double initial_step_size = (x_max - x_min) /
-//        ui->expression_graph->width(); while (variable <= x_max) {
-//            int error = convert_infix_to_RPN(str_for_calc, &q_root);
-//            if (error == OK) {
-//                error = evaluate_expression(q_root, variable, &result);
-//            }
-//            if (error == OK && result == result && result != 1.0 / 0.0) {
-//                x.push_back(variable);
-//                y.push_back(result);
-//                qDebug() << "x = "<< variable << "y = " << result;
-//            }
-//            if (x.size() == 1) {
-//                variable += initial_step_size;
-//            } else {
-//                variable += stepSizeCalculation(x, y, px_scale);
-//            }
-//        }
-//        ui->expression_graph->expression_graph();
-//        ui->expression_graph->graph(0)->setData(x, y);
-//        ui->expression_graph->graph(0)->setPen(QPen(Qt::black));
-//        ui->expression_graph->graph(0)->setLineStyle(QCPGraph::lsNone);
-//        ui->expression_graph->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle,
-//        2));
-
-//        ui->expression_graph->xAxis->setRange(x_min, x_max);
-//        ui->expression_graph->yAxis->setRange(y_min, y_max);
-//        ui->expression_graph->replot();
-//    }
-//    delete str_for_calc;
-//    x.clear();
-//    y.clear();
-//}
-
-// void MainWindow::on_actionCreditCalculator_triggered()
-//{
-//     CreditCalcWindow window;
-//     window.show();
-// }
-
-

@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef SMARTCALC_05_VISUAL_INTERFACE_MAINWINDOW_H_
+#define SMARTCALC_05_VISUAL_INTERFACE_MAINWINDOW_H_
 
 #include <QMainWindow>
 #include <cstring>
@@ -76,4 +76,4 @@ class MainWindow : public QMainWindow {
   bool is_u_minus_input = false;
   int brackets_counter = 0;
 };
-#endif  // MAINWINDOW_H
+#endif  // SMARTCALC_05_VISUAL_INTERFACE_MAINWINDOW_H_
