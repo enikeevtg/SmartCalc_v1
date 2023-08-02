@@ -67,11 +67,11 @@ enum error_codes {
                                          // token_t"
 
 #define CALC_FUNCTIONS_NUMBER 17
-#define CALC_FUNCTIONS_POINTERS                                   \
-  double (*calc_functions[CALC_FUNCTIONS_NUMBER])() = {           \
-      cos,      sin,       tan,      acos,     asin,    atan,     \
-      sqrt,     log,       log10,    u_plus,   u_minus, add_calc, \
-      sub_calc, mult_calc, div_calc, mod_calc, pow_calc}
+#define CALC_FUNCTIONS_POINTERS                                 \
+  double (*calc_functions[CALC_FUNCTIONS_NUMBER])() = {         \
+      cos,      sin,       tan,      acos,   asin,    atan,     \
+      sqrt,     log,       log10,    u_plus, u_minus, add_calc, \
+      sub_calc, mult_calc, div_calc, fmod,   pow}
 // sequence is the same that in "typedef enum token_type {...} token_t", but
 // without OPEN_BRACKET
 
@@ -112,7 +112,5 @@ double add_calc(double value_1, double value_2);
 double sub_calc(double value_1, double value_2);
 double mult_calc(double value_1, double value_2);
 double div_calc(double value_1, double value_2);
-double mod_calc(double value_1, double value_2);
-double pow_calc(double value_1, double value_2);
 
 #endif  // SMARTCALC_SMART_CALC_H_

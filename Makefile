@@ -6,7 +6,7 @@ MK = mkdir -p
 RM = rm -rf
 OS := $(shell uname)
 ifeq ($(OS), Darwin)
-#	LEAKS = CK_FORK=no leaks --atExit --
+	LEAKS = CK_FORK=no leaks --atExit --
 	REPORT_OPEN = open
 else ifeq ($(OS), Linux)
 	LEAKS =
@@ -31,37 +31,27 @@ DATA_STRUCT_DIR = ./01_data_structs_processing/
 EVAL_DIR = ./02_evaluations/
 SRC = $(wildcard $(DATA_STRUCT_DIR)*.c)
 SRC += $(wildcard $(EVAL_DIR)*.c)
-OBJ_DIR = ./06_obj/
-OBJ = $(patsubst $(DATA_STRUCT_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
-OBJ += $(patsubst $(EVAL_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
-MAN_TESTS_DIR = ./04_man_tests/
-TESTS_DIR = ./03_tests/
+
+CREDIT_DIR = ./03_credit_calculator/
+DEPOSIT_DIR = ./04_deposit_calculator/
+
+VISUAL_DIR = ./05_visual_interface/
+
+BUILD_DIR = ./build/
+APP = SmartCalc_v1.app
+
+MAN_TESTS_DIR = ./07_man_tests/
+TESTS_DIR = ./06_tests/
 TESTS_SRC = $(wildcard $(TESTS_DIR)*.c)
 TEST_EXE = ./tests_runner
 
-CREDIT_DIR = ./06_credit_calculator/
-
 # BUILD
-all:
-
-build: 
-
-
-objects: makeobjdir $(OBJ)
-
-makeobjdir:
-	@$(MK) $(OBJ_DIR)
-
-$(OBJ_DIR)%.o: $(DATA_STRUCT_DIR)%.c
-	@$(CC) $(CF) $(STD) -c $^ -o $@
-
-$(OBJ_DIR)%.o: $(EVAL_DIR)%.c
-	@$(CC) $(CF) $(STD) -c $^ -o $@
+all: clean install launch
 
 # TESTS
 test: clean
 	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
-	@$(LEAKS) $(TEST_EXE)
+	$(TEST_EXE)
 
 gcov: gcov_report
 
@@ -81,20 +71,43 @@ man_test: clean
 	$(CC) $(MAN_TESTS_DIR)test_evaluate_expression.c $(SRC) $(DEBUG)
 	$(LEAKS) ./a.out
 
+leaks: clean
+	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
+	@$(LEAKS) $(TEST_EXE)
+
+# QT APP
+install:
+	$(MK) $(BUILD_DIR)
+	cd $(BUILD_DIR) && qmake ../src/$(SRC_DIR)$(VISUAL_DIR)SmartCalc_v1.pro && make && make clean && rm -rf .qmake.stash Makefile
+
+launch:
+	open $(BUILD_DIR)$(APP)
+
+uninstall:
+	rm -rf $(BUILD_DIR)*
+
+dvi:
+	open $(SRC_DIR)readme.html
+
+dist:
+	@if [ ! -d $(BUILD_DIR)$(APP) ] ; then echo "creating build" ; make install; fi
+	@if [ -d $(BUILD_DIR) ] ; then tar -zcvf archive.tar $(BUILD_DIR); else echo "build not exists, error!"; exit 1; fi
+
+app_leaks:
+	$(LEAKS) $(BUILD_DIR)$(APP)/Contents/MacOS/SmartCalc_v1
+
 # SERVICES
 style:
-	clang-format --style=google -n *.h $(SRC) $(TESTS_SRC) $(CREDIT_DIR)*
+	clang-format --style=google -n *.h $(SRC) $(TESTS_SRC) $(CREDIT_DIR)* $(DEPOSIT_DIR)* $(VISUAL_DIR)*.cpp $(VISUAL_DIR)*.h
 
 gost:
-	clang-format --style=google -i *.h $(SRC) $(TESTS_SRC) $(CREDIT_DIR)*
+	clang-format --style=google -i *.h $(SRC) $(TESTS_SRC) $(CREDIT_DIR)* $(DEPOSIT_DIR)* $(VISUAL_DIR)*.cpp $(VISUAL_DIR)*.h
 
 clean:
-	@$(RM) a.out
 	@$(RM) $(OBJ_DIR)
-	@$(RM) *.gcno *.gcda
-	@$(RM) *.dSYM
+	@$(RM) $(SRC_DIR)*.o
 	@$(RM) ./report/
+	@$(RM) *.dSYM
+	@$(RM) a.out *.tar
+	@$(RM) *.gcno *.gcda
 	@$(RM) $(TEST_EXE)
-
-	
-

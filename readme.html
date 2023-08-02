@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartCalc</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Courier New', Courier, monospace;
+      transition: all 0.3s ease;
+    }
+
+    h1, h2, h3, h4 {
+      color: #6A5ACD;
+      transition: color 0.5s;
+    }
+
+    p, li {
+      color: #000000;
+      transition: color 0.5s;
+    }
+
+    div {
+      border: 1px solid #52de42;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(69, 228, 69, 0.3);
+      transition: all 0.5s ease;
+    }
+
+    div:hover {
+      box-shadow: 0 0 15px rgba(30,144,255,0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <div style="padding-left: 20px;">
+    <h1>Инструкция к проекту SmartCalc_v1</h1>
+    <div style="margin: 10px;">
+      <h3>Цели Makefile:</h3>
+      <p>
+        ● make all - установка и запуск калькулятора<br>
+        ● make install - установка приложения калькулятор<br>
+        ● make unistall - удаление приложения<br>
+        ● make clean - очистка всех ненужных файлов<br>
+        ● make dist - создание архива<br>
+        ● make test - проверка функционала калькулятора с помощью тестов<br>
+        ● make gcov_report - отображение покрытия кода unit тестами<br>
+        ● make dvi - вывод документации проекта<br>
+      </p>
+    </div>
+    <div>
+    <h3>
+      Функционал калькулятора:
+    </h3>
+    <div style="display: flex; justify-content: left;">
+      <div style="padding-right:50px;">
+        <h3> Основные операторы</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          <li>● Скобки</li>
+          <li>● Сложение</li>
+          <li>● Вычитание</li>
+          <li>● Умножение</li>
+          <li>● Деление</li>
+          <li>● Возведение в степень</li>
+          <li>● Остаток от деления</li>
+          <li>● Унарный плюс</li>
+          <li>● Унарный минус</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Функции</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          <li>● Косинус</li>
+          <li>● Синус</li>
+          <li>● Тангенс</li>
+          <li>● Арккосинус</li>
+          <li>● Арксинус</li>
+          <li>● Арктангенс</li>
+          <li>● Квадратный корень</li>
+          <li>● Натуральный логарифм</li>
+          <li>● Логарифм по основанию десять</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Дополнительные возможности</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          <li>● Построение графика функции</li>
+          <li>● Кредитный калькулятор</li>
+          <li>● Депозитный калькулятор</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
