@@ -78,7 +78,7 @@ leaks: clean
 # QT APP
 install:
 	$(MK) $(BUILD_DIR)
-	cd $(BUILD_DIR) && qmake ../src/$(SRC_DIR)$(VISUAL_DIR)SmartCalc_v1.pro && make && make clean && rm -rf .qmake.stash Makefile
+	cd $(BUILD_DIR) && qmake ../$(SRC_DIR)$(VISUAL_DIR)SmartCalc_v1.pro && make && make clean && rm -rf .qmake.stash Makefile
 
 launch:
 	open $(BUILD_DIR)$(APP)
