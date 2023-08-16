@@ -1,5 +1,5 @@
-#ifndef SMARTCALC_DATA_STRUCTURES_H_
-#define SMARTCALC_DATA_STRUCTURES_H_
+#ifndef SMART_CALC_V1_SRC__DATA_STRUCTURES_H_
+#define SMART_CALC_V1_SRC__DATA_STRUCTURES_H_
 
 enum data_structure { STACK, QUEUE };
 
@@ -37,4 +37,4 @@ typedef struct node_tag {
   double token_value;
 } node_t; /* 24 bytes size */
 
-#endif  // SMARTCALC_DATA_STRUCTURES_H_
+#endif  // SMART_CALC_V1_SRC__DATA_STRUCTURES_H_

@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 extern "C" {
-#include "../03_credit_calculator/credit_calculator.h"
+#include "../04_credit_calculator/credit_calculator.h"
 }
 
 namespace Ui {

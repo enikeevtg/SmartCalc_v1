@@ -1,5 +1,5 @@
-#ifndef SMARTCALC_04_DEPOSIT_CALCULATOR_CREDIT_CALCULATOR_H_
-#define SMARTCALC_04_DEPOSIT_CALCULATOR_CREDIT_CALCULATOR_H_
+#ifndef SMARTCALC_05_DEPOSIT_CALCULATOR_CREDIT_CALCULATOR_H_
+#define SMARTCALC_05_DEPOSIT_CALCULATOR_CREDIT_CALCULATOR_H_
 
 #include <math.h>
 #include <stdlib.h>
@@ -28,4 +28,4 @@ struct deposit_output {
 int deposit_calculation(struct deposit_input* pdata,
                         struct deposit_output* presult, int deposit_type);
 
-#endif  // SMARTCALC_04_DEPOSIT_CALCULATOR_CREDIT_CALCULATOR_H_
+#endif  // SMARTCALC_05_DEPOSIT_CALCULATOR_CREDIT_CALCULATOR_H_

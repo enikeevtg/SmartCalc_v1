@@ -1,5 +1,5 @@
-#ifndef SMARTCALC_03_CREDIT_CALCULATOR_CREDIT_CALCULATOR_H_
-#define SMARTCALC_03_CREDIT_CALCULATOR_CREDIT_CALCULATOR_H_
+#ifndef SMARTCALC_04_CREDIT_CALCULATOR_CREDIT_CALCULATOR_H_
+#define SMARTCALC_04_CREDIT_CALCULATOR_CREDIT_CALCULATOR_H_
 
 #include <math.h>
 
@@ -21,4 +21,4 @@ struct credit_output {
 struct credit_output credit_calculation(struct credit_input* pdata,
                                         int credit_type);
 
-#endif  // SMARTCALC_03_CREDIT_CALCULATOR_CREDIT_CALCULATOR_H_
+#endif  // SMARTCALC_04_CREDIT_CALCULATOR_CREDIT_CALCULATOR_H_

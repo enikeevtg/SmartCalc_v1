@@ -5,7 +5,7 @@
 #include <QTableWidget>
 
 extern "C" {
-#include "../04_deposit_calculator/deposit_calculator.h"
+#include "../05_deposit_calculator/deposit_calculator.h"
 }
 
 namespace Ui {

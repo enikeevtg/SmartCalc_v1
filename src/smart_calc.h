@@ -1,5 +1,5 @@
-#ifndef SMARTCALC_SMART_CALC_H_
-#define SMARTCALC_SMART_CALC_H_
+#ifndef SMART_CALC_V1_SRC_SMART_CALC_H_
+#define SMART_CALC_V1_SRC_SMART_CALC_H_
 
 #include <math.h>
 #include <stdio.h>
@@ -115,4 +115,4 @@ double div_calc(double value_1, double value_2);
 double mod_calc(double value_1, double value_2);
 double pow_calc(double value_1, double value_2);
 
-#endif  // SMARTCALC_SMART_CALC_H_
+#endif  // SMART_CALC_V1_SRC_SMART_CALC_H_

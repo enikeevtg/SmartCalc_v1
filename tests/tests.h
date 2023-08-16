@@ -4,7 +4,7 @@
 #include <check.h>
 #include <stdlib.h>
 
-#include "../smart_calc.h"
+#include "../src/smart_calc.h"
 
 Suite* test_push(void);
 Suite* test_fill_node(void);
