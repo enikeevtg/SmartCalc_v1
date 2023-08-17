@@ -3,7 +3,7 @@
  * enikeeev.tg@gmail.com
  */
 
-#include "../smart_calc.h"
+#include "../SmartCalc.h"
 
 /// @brief data struct removing from memory
 /// @param phead stack head (or queue root) pointer

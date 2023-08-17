@@ -36,7 +36,7 @@ HEADERS += \
     ../04_credit_calculator/credit_calculator.h \
     ../05_deposit_calculator/deposit_calculator.h \
     ../data_structures.h \
-    ../smart_calc.h \
+    ../SmartCalc.h \
     creditcalcwindow.h \
     depositcalcwindow.h \
     mainwindow.h \

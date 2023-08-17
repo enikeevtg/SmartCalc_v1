@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
 
+  setlocale(LC_NUMERIC, "C");
+
   // INPUT_LABEL
   ui->label_input->setWordWrap(true);
 

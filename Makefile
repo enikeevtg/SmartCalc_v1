@@ -31,13 +31,14 @@ ATTEMPT_DIR = ./attempt_at_writing/
 SRC_DIR = ./src/
 
 UI_DIR = $(SRC_DIR)01_ui/
-CREDIT_DIR = $(SRC_DIR)04_credit_calculator/
-DEPOSIT_DIR = $(SRC_DIR)05_deposit_calculator/
 
 DATA_STRUCT_DIR = $(SRC_DIR)02_data_structs_processing/
 EVAL_DIR = $(SRC_DIR)03_evaluations/
 SRC = $(wildcard $(DATA_STRUCT_DIR)*.c)
 SRC += $(wildcard $(EVAL_DIR)*.c)
+
+CREDIT_DIR = $(SRC_DIR)04_credit_calculator/
+DEPOSIT_DIR = $(SRC_DIR)05_deposit_calculator/
 
 BUILD_DIR = ./build/
 APP = SmartCalc_v1.app
@@ -50,34 +51,7 @@ TEST_EXE = ./tests_runner
 # BUILD
 all: clean style test gcov_report install dvi dist
 
-# TESTS
-test: clean
-	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
-	@$(TEST_EXE)
-
-gcov: gcov_report
-
-gcov_report: clean
-	@$(CC) $(CF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
-	@$(TEST_EXE)
-	@lcov -t "./gcov" -o report.info --no-external -c -d .
-	@genhtml -o report report.info
-	@gcovr -r . --html-details -o ./report/coverage_report.html
-	@$(REPORT_OPEN) ./report/index.html
-	@rm -rf *.gcno *.gcda gcov_test *.info
-
-man_test: clean
-#	$(CC) $(ATTEMPT_DIR)*.c $(DEBUG)
-#	$(CC) $(MAN_TESTS_DIR)test_structures.c $(SRC)
-#	$(CC) $(MAN_TESTS_DIR)test_convert_infix_to_RPN.c $(SRC) $(DEBUG)
-	$(CC) $(MAN_TESTS_DIR)test_evaluate_expression.c $(SRC) $(DEBUG)
-	$(LEAKS) ./a.out
-
-leaks: clean
-	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
-	@$(LEAKS) $(TEST_EXE)
-
-# QT APP
+# APP
 install:
 	$(MK) $(BUILD_DIR)
 	cd $(BUILD_DIR) && qmake ../$(UI_DIR)SmartCalc_v1.pro && make -j6 && make clean && rm -rf .qmake.stash Makefile
@@ -96,6 +70,33 @@ dist:
 
 app_leaks:
 	$(LEAKS) $(BUILD_DIR)$(APP)/Contents/MacOS/SmartCalc_v1
+
+# TESTS
+test: clean
+	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
+	@$(LEAKS) $(TEST_EXE)
+
+gcov: gcov_report
+
+gcov_report: clean
+	@$(CC) $(CF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
+	@$(TEST_EXE)
+	@lcov -t "./gcov" -o report.info --no-external -c -d .
+	@genhtml -o report report.info
+	@gcovr -r . --html-details -o ./report/coverage_report.html
+	@$(REPORT_OPEN) ./report/index.html
+	@rm -rf *.gcno *.gcda gcov_test *.info
+
+leaks: clean
+	@$(CC) $(CF) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TEST_EXE) $(TEST_FLAGS)
+	@$(LEAKS) $(TEST_EXE)
+
+man_test: clean
+#	$(CC) $(ATTEMPT_DIR)*.c $(DEBUG)
+#	$(CC) $(MAN_TESTS_DIR)test_structures.c $(SRC)
+#	$(CC) $(MAN_TESTS_DIR)test_convert_infix_to_RPN.c $(SRC) $(DEBUG)
+	$(CC) $(MAN_TESTS_DIR)test_evaluate_expression.c $(SRC) $(DEBUG)
+	$(LEAKS) ./a.out
 
 # SERVICES
 style:

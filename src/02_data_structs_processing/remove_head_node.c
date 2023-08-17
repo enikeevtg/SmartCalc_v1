@@ -3,7 +3,7 @@
  * enikeeev.tg@gmail.com
  */
 
-#include "../smart_calc.h"
+#include "../SmartCalc.h"
 
 /// @brief node removing from memory
 /// @param phead structure head pointer

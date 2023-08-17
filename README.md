@@ -1,3 +1,3 @@
-# smart_calc_v1
+# SmartCalc_v1
 
-console calculator improving
+[console_calculator](https://github.com/enikeevtg/console_calculator) with UI

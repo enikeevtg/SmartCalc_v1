@@ -3,28 +3,28 @@
  * enikeeev.tg@gmail.com
  */
 
-#include "../smart_calc.h"
+#include "../SmartCalc.h"
 
-int drag_and_drop(int address, node_t** src_phead, node_t** dest_phead);
-
-int move_node_from_stack_to_queue(node_t** s_phead, node_t** q_phead) {
-  return drag_and_drop(QUEUE, s_phead, q_phead);
+/// @brief
+/// @param s_phead
+/// @param q_phead
+void move_node_from_stack_to_queue(node_t** s_phead, node_t** q_phead) {
+  if (*q_phead != NULL) {
+    (*q_phead)->pnext = *s_phead;
+    *q_phead = (*q_phead)->pnext;
+  } else {
+    *q_phead = *s_phead;
+  }
+  *s_phead = (*s_phead)->pnext;
+  (*q_phead)->pnext = NULL;
 }
 
-int move_node_from_queue_to_stack(node_t** q_phead, node_t** s_phead) {
-  return drag_and_drop(STACK, q_phead, s_phead);
-}
-
-/// @brief the data at the top of the one data structure removing and returning
-/// it to another data structure
-/// @param dest_phead pointer to head node pointer of dest struct
-/// @param src_phead pointer to head node pointer of src struct
-/// @return error code
-int drag_and_drop(int address, node_t** src_phead, node_t** dest_phead) {
-  if (*src_phead == NULL) return DATA_STRUCT_UNDERFLOW;
-
-  int error = push(address, dest_phead, *src_phead);
-  remove_head_node(src_phead);
-
-  return error;
+/// @brief
+/// @param q_phead
+/// @param s_phead
+void move_node_from_queue_to_stack(node_t** q_proot, node_t** s_phead) {
+  node_t* tmp_node = (*q_proot)->pnext;
+  (*q_proot)->pnext = *s_phead;
+  *s_phead = *q_proot;
+  *q_proot = tmp_node;
 }

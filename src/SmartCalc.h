@@ -1,5 +1,5 @@
-#ifndef SMART_CALC_V1_SRC_SMART_CALC_H_
-#define SMART_CALC_V1_SRC_SMART_CALC_H_
+#ifndef SMARTCALC_V1_SRC_SMARTCALC_H_
+#define SMARTCALC_V1_SRC_SMARTCALC_H_
 
 #include <math.h>
 #include <stdio.h>
@@ -51,7 +51,7 @@ enum error_codes {
       "incorrect input",                                                \
       "empty queue",                                                    \
       "acos: invalid argument",                                         \
-      "ason: invalid argument",                                         \
+      "asin: invalid argument",                                         \
       "ln: invalid argument",                                           \
       "log: invalid argument",                                          \
       "sqrt: invalid argument"}
@@ -82,8 +82,8 @@ int pop(node_t** phead, node_t* pnode);
 void fill_node(node_t* src, node_t* dest);
 void remove_head_node(node_t** phead);
 void remove_struct(node_t** phead);
-int move_node_from_queue_to_stack(node_t** q_phead, node_t** s_phead);
-int move_node_from_stack_to_queue(node_t** s_phead, node_t** q_phead);
+void move_node_from_queue_to_stack(node_t** q_phead, node_t** s_phead);
+void move_node_from_stack_to_queue(node_t** s_phead, node_t** q_phead);
 
 // converter
 int convert_infix_to_RPN(const char* str, node_t** q_proot);
@@ -112,7 +112,5 @@ double add_calc(double value_1, double value_2);
 double sub_calc(double value_1, double value_2);
 double mult_calc(double value_1, double value_2);
 double div_calc(double value_1, double value_2);
-double mod_calc(double value_1, double value_2);
-double pow_calc(double value_1, double value_2);
 
-#endif  // SMART_CALC_V1_SRC_SMART_CALC_H_
+#endif  // SMARTCALC_V1_SRC_SMARTCALC_H_

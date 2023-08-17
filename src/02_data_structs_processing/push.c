@@ -3,7 +3,7 @@
  * enikeeev.tg@gmail.com
  */
 
-#include "../smart_calc.h"
+#include "../SmartCalc.h"
 
 node_t* create_new_node(node_t* pdata, node_t* next);
 

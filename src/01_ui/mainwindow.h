@@ -9,8 +9,8 @@
 #include "depositcalcwindow.h"
 
 extern "C" {
+#include "../SmartCalc.h"
 #include "../data_structures.h"
-#include "../smart_calc.h"
 }
 
 QT_BEGIN_NAMESPACE
