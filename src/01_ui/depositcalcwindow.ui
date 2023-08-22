@@ -14,6 +14,11 @@
    <string>Deposit Calculator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+	background-color: rgb(235, 236, 243);
+}</string>
+   </property>
    <widget class="QDoubleSpinBox" name="doubleSpinBox_deposit_rate">
     <property name="geometry">
      <rect>
@@ -50,6 +55,12 @@
       <family>Arial Rounded MT Bold</family>
       <pointsize>21</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -150,6 +161,12 @@
       <pointsize>21</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
+    </property>
     <property name="lineWidth">
      <number>1</number>
     </property>
@@ -177,6 +194,12 @@
       <family>Arial Rounded MT Bold</family>
       <pointsize>21</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -206,6 +229,12 @@
       <pointsize>21</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
+    </property>
     <property name="lineWidth">
      <number>1</number>
     </property>
@@ -233,6 +262,12 @@
       <family>Arial Rounded MT Bold</family>
       <pointsize>21</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -262,6 +297,12 @@
       <pointsize>21</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
+    </property>
     <property name="lineWidth">
      <number>1</number>
     </property>
@@ -289,6 +330,12 @@
       <family>Arial Rounded MT Bold</family>
       <pointsize>21</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -318,6 +365,12 @@
       <pointsize>21</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
+    </property>
     <property name="text">
      <string>%</string>
     </property>
@@ -336,6 +389,12 @@
       <family>Arial Rounded MT Bold</family>
       <pointsize>21</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -387,6 +446,12 @@
       <pointsize>21</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
+    </property>
     <property name="lineWidth">
      <number>1</number>
     </property>
@@ -414,6 +479,12 @@
       <family>Arial Rounded MT Bold</family>
       <pointsize>21</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -495,6 +566,12 @@ QPushButton:pressed {
       <pointsize>21</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
+    </property>
     <property name="text">
      <string>%</string>
     </property>
@@ -513,6 +590,12 @@ QPushButton:pressed {
       <family>Arial Rounded MT Bold</family>
       <pointsize>21</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -616,7 +699,10 @@ QPushButton:pressed {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QCheckBox{
+	color: rgb(108, 204, 143);
+	border: disable;
+}</string>
     </property>
     <property name="text">
      <string>Capitalization of interests</string>
@@ -863,7 +949,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>340</y>
+      <y>335</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -887,7 +973,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>340</y>
+      <y>335</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -912,7 +998,7 @@ QPushButton:pressed {
      <rect>
       <x>70</x>
       <y>490</y>
-      <width>80</width>
+      <width>121</width>
       <height>25</height>
      </rect>
     </property>
@@ -931,9 +1017,9 @@ QPushButton:pressed {
    <widget class="QDoubleSpinBox" name="doubleSpinBox_replenishments_amount">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>190</x>
       <y>490</y>
-      <width>161</width>
+      <width>121</width>
       <height>25</height>
      </rect>
     </property>
@@ -954,7 +1040,7 @@ QPushButton:pressed {
      <rect>
       <x>320</x>
       <y>490</y>
-      <width>80</width>
+      <width>121</width>
       <height>25</height>
      </rect>
     </property>
@@ -973,9 +1059,9 @@ QPushButton:pressed {
    <widget class="QDoubleSpinBox" name="doubleSpinBox_withdrawals_amount">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>440</x>
       <y>490</y>
-      <width>161</width>
+      <width>121</width>
       <height>25</height>
      </rect>
     </property>
@@ -1008,6 +1094,12 @@ QPushButton:pressed {
      <family>Arial Rounded MT Bold</family>
      <pointsize>21</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QStatusBar {
+	background-color: rgb(41, 50, 66);
+	border: 1px solid rgb(31, 38, 50);
+}</string>
    </property>
   </widget>
  </widget>

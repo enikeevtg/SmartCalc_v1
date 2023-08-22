@@ -9,57 +9,29 @@ MainWindow::MainWindow(QWidget* parent)
 
   setlocale(LC_NUMERIC, "C");
 
+  last_token_type = num_token;
+  is_dot_input = false;
+  is_u_minus_input = false;
+  brackets_counter = 0;
+
   // INPUT_LABEL
   ui->label_input->setWordWrap(true);
 
   // DIGIT BUTTONS
-  connect(ui->pushButton_0, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_1, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_2, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_3, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_4, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_5, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_6, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_7, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_8, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
-  connect(ui->pushButton_9, SIGNAL(clicked()), this,
-          SLOT(clickedButtonDigits()));
+  for (auto button : ui->buttonGroup_numbers->buttons()) {
+    connect(button, SIGNAL(clicked()), this, SLOT(clickedButtonDigits()));
+  }
 
   // OPERATORS BUTTONS
-  connect(ui->pushButton_op_plus, SIGNAL(clicked()), this,
-          SLOT(clickedButtonOperations()));
-  connect(ui->pushButton_op_minus, SIGNAL(clicked()), this,
-          SLOT(clickedButtonOperations()));
-  connect(ui->pushButton_op_mult, SIGNAL(clicked()), this,
-          SLOT(clickedButtonOperations()));
-  connect(ui->pushButton_op_div, SIGNAL(clicked()), this,
-          SLOT(clickedButtonOperations()));
-  connect(ui->pushButton_op_mod, SIGNAL(clicked()), this,
-          SLOT(clickedButtonOperations()));
+  for (auto button : ui->buttonGroup_operators->buttons()) {
+    connect(button, SIGNAL(clicked()), this, SLOT(clickedButtonOperations()));
+  }
 
   // MATH FUNCTIONS BUTTONS
   ui->pushButton_mfunc_inv->setCheckable(true);
-  connect(ui->pushButton_mfunc_cos, SIGNAL(clicked()), this,
-          SLOT(clickedButtonMathFunctions()));
-  connect(ui->pushButton_mfunc_sin, SIGNAL(clicked()), this,
-          SLOT(clickedButtonMathFunctions()));
-  connect(ui->pushButton_mfunc_tan, SIGNAL(clicked()), this,
-          SLOT(clickedButtonMathFunctions()));
-  connect(ui->pushButton_mfunc_sqrt, SIGNAL(clicked()), this,
-          SLOT(clickedButtonMathFunctions()));
-  connect(ui->pushButton_mfunc_log, SIGNAL(clicked()), this,
-          SLOT(clickedButtonMathFunctions()));
-  connect(ui->pushButton_mfunc_ln, SIGNAL(clicked()), this,
-          SLOT(clickedButtonMathFunctions()));
+  for (auto button : ui->buttonGroup_mfunctions->buttons()) {
+    connect(button, SIGNAL(clicked()), this, SLOT(clickedButtonMathFunctions()));
+  }
 
   // VARIABLE SPINBOX
   ui->doubleSpinBox_var->setValue(0.0);
@@ -69,6 +41,11 @@ MainWindow::MainWindow(QWidget* parent)
   ui->doubleSpinBox_var->setDecimals(7);
 
   // GRAPH
+  // GRAPH SETTINGS
+  ui->expression_graph->setBackground(QColor(58, 70, 90));
+  ui->expression_graph->xAxis->setRange(0.0, 21.0);
+  ui->expression_graph->yAxis->setRange(-11.0, 11.0);
+
   // RANGE SPINBOXES
   ui->doubleSpinBox_xmin->setMinimum(-1000000.0);
   ui->doubleSpinBox_xmin->setMaximum(1000000.0);
@@ -86,11 +63,6 @@ MainWindow::MainWindow(QWidget* parent)
   ui->doubleSpinBox_xmax->setValue(21.0);
   ui->doubleSpinBox_ymin->setValue(-11.0);
   ui->doubleSpinBox_ymax->setValue(11.0);
-
-  // GRAPH
-  ui->expression_graph->setBackground(QColor(58, 70, 90));
-  ui->expression_graph->xAxis->setRange(0.0, 21.0);
-  ui->expression_graph->yAxis->setRange(-11.0, 11.0);
 
   // TOOLBAR
   ui->toolBar->setMovable(false);
